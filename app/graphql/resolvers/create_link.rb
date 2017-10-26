@@ -14,6 +14,7 @@ class Resolvers::CreateLink < GraphQL::Function
     Link.create!(
       description: args[:description],
       url: args[:url],
+      user: _ctx[:current_user]
     )
   end
 end
