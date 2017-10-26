@@ -7,4 +7,5 @@ Types::LinkType = GraphQL::ObjectType.define do
   field :description, !types.String
 
   field :postedBy, -> { Types::UserType }, property: :user
+  field :votes, -> { !types[Types::VoteType]}
 end
