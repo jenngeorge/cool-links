@@ -4,9 +4,11 @@ Types::QueryType = GraphQL::ObjectType.define do
   # They will be entry points for queries on your schema.
 
   # queries are represented as fields
-  field :allLinks, !types[Types::LinkType] do
+  # field :allLinks, !types[Types::LinkType] do
+  #
+  #   #resolve would be called to fetch data for the field
+  #   resolve -> (obj, args, ctx) { Link.all }
+  # end
 
-    #resolve would be called to fetch data for the field
-    resolve -> (obj, args, ctx) { Link.all }
-  end
+  field :allLinks, function: Resolvers::LinksSearch
 end
